@@ -76,6 +76,15 @@ export default class Geo {
     return this.project(ptLatLng, true);
   }
 
+  fromLatLngToDivPixel(ptLatLng) {
+    if (this.mapCanvasProjection_) {
+      const latLng = new this.maps_.LatLng(ptLatLng.lat, ptLatLng.lng);
+      return this.mapCanvasProjection_.fromLatLngToDivPixel(latLng);
+    }
+
+    return this.project(ptLatLng, true);
+  }
+
   getWidth() {
     return this.transform_.width;
   }
